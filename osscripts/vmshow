@@ -23,11 +23,11 @@ openstack server show $vmid -c addresses -c name -c project_id -c user_id -c sta
 }
 
 function security_rule_list() {
-	for i in `nova list-secgroup $vmid | grep -vE '(Id|\+)' | awk '{print $2"("$4")"}'`;do echo Securty Group: $i;openstack security group rule list `echo $i|awk -F"(" '{print $1}'`;done
+	for i in `nova list-secgroup $vmid | grep -vE '(Id|\+)' | awk '{print $2"("$4")"}'`;do echo Securty Group: $i;openstack security group rule list --long `echo $i|awk -F"(" '{print $1}'`;done
 }
 
-function get_user_project_info() {
-
-}
+#function get_user_project_info() {
+#
+#}
 openstack_server_show
 security_rule_list
